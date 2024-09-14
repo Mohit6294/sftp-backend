@@ -69,7 +69,8 @@ public class SftpServiceImpl implements ISftpService {
                         LocalDateTime ldt = DateFormatter.parseCustomDateString(new Date(file.getAttributes().getModifyTime().toMillis()).toString());
                         FileModal fileModal = new FileModal(file.getFilename()
                                 , file.getAttributes().getSize()
-                                , ldt.toString().replace("T", " "));
+                                , ldt.toString().replace("T", " ")
+                                , file.getAttributes().getType() == 2);
                         fileNames.add(fileModal);
                     }
 

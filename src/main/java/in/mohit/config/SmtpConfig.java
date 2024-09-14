@@ -11,7 +11,7 @@ public class SmtpConfig {
 	@Bean
 	public DefaultSftpSessionFactory sftpSessionFactory() {
 		DefaultSftpSessionFactory factory = new DefaultSftpSessionFactory(true);
-		factory.setHost("172.17.176.1");
+		factory.setHost("192.168.29.84");
 		factory.setPort(22);
 		factory.setUser("tester");
 		factory.setPassword("password");
