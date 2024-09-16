@@ -12,7 +12,7 @@ public interface ISftpService {
 
 	 List<FileModal> listFilesInDirectory(String remoteDirectory);
 
-	 void uploadFile(String remoteDirectory, String filename, InputStream fileInputStream);
+	 FileModal uploadFile(String remoteDirectory, String filename, InputStream fileInputStream,Long fileSize);
 
 	void deleteFile(String remoteDirectory, String fileName);
 

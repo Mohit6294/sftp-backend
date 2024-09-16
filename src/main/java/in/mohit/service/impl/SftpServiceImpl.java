@@ -84,11 +84,23 @@ public class SftpServiceImpl implements ISftpService {
     }
 
     @Override
-    public void uploadFile(String remoteDirectory, String fileName, InputStream fileInputStream) {
-        sftpRemoteFileTemplate.execute(session -> {
-            session.write(fileInputStream, remoteDirectory + "/" + fileName);
-            return null;
-        });
+    public FileModal uploadFile(String remoteDirectory, String fileName, InputStream fileInputStream,Long filesize) {
+        try {
+            sftpRemoteFileTemplate.execute(session -> {
+                session.write(fileInputStream, remoteDirectory + "/" + fileName);
+
+
+                return null;
+            });
+            FileModal fileModal = new FileModal();
+            fileModal.setDate(LocalDateTime.now().toString());
+            fileModal.setName(fileName);
+            fileModal.setSize(filesize);
+            fileModal.setFolder(false);
+            return fileModal;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
